@@ -178,6 +178,24 @@
   .pub .venue{color:rgba(255,255,255,.75);font-style:italic;font-size:.9rem;position:relative;z-index:1;}
   .pub a.doi{display:inline-flex;align-items:center;gap:7px;margin-top:16px;background:#fff;color:var(--teal-2);padding:10px 18px;border-radius:999px;font-weight:600;font-size:.9rem;position:relative;z-index:1;transition:transform .18s ease;}
   .pub a.doi:hover{transform:translateY(-3px);color:var(--teal);}
+  /* PALINCODE lineage barcode — recording ternary palindromic bits */
+  .pub .barcode{display:flex;gap:5px;margin-bottom:18px;position:relative;z-index:1;max-width:340px;}
+  .pub .barcode span{flex:1;height:26px;border-radius:4px;background:rgba(255,255,255,.16);transform-origin:center bottom;animation:record 5s ease-in-out infinite;}
+  @keyframes record{0%,6%{background:rgba(255,255,255,.16);transform:scaleY(.5);}
+    15%{background:var(--c);transform:scaleY(1.08);}20%{transform:scaleY(1);}
+    80%{background:var(--c);transform:scaleY(1);}90%,100%{background:rgba(255,255,255,.16);transform:scaleY(.5);}}
+  .pub .barcode-label{font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.7);margin:-8px 0 16px;position:relative;z-index:1;}
+  .pub-figure{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px;margin-bottom:20px;text-align:center;}
+  .pub-figure svg{width:100%;height:auto;display:block;max-width:600px;margin:0 auto 8px;}
+  .fig-cap{font-size:.86rem;color:var(--ink-soft);max-width:64ch;margin:6px auto 0;}
+  .pub-cite{border-top:1px solid var(--line);margin-top:20px;padding-top:22px;text-align:center;}
+  .pub-cite .tag-light{display:inline-block;background:rgba(18,114,122,.1);color:var(--teal-2);padding:5px 12px;border-radius:999px;font-size:.78rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-bottom:12px;}
+  .cite-title{font-family:'Fraunces',serif;font-weight:600;font-size:1.3rem;color:var(--ink);margin:0 0 8px;line-height:1.3;}
+  .cite-authors{color:var(--ink-soft);font-size:.95rem;margin:0 0 4px;}
+  .cite-authors b{color:var(--teal-2);}
+  .cite-venue{color:var(--ink-soft);font-style:italic;font-size:.88rem;margin:0 0 16px;}
+  .cite-doi{display:inline-flex;align-items:center;gap:7px;background:var(--teal-2);color:#fff;padding:10px 20px;border-radius:999px;font-weight:600;font-size:.9rem;transition:transform .18s ease,background .2s;}
+  .cite-doi:hover{transform:translateY(-3px);background:var(--teal);color:#fff;}
 
   /* ============ Skills ============ */
   .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
@@ -321,6 +339,7 @@
   .send-anim .h2{animation:heartUp 2.8s ease-in-out infinite;animation-delay:1.4s;}
   @keyframes heartUp{0%{opacity:0;transform:translateY(8px) scale(.4);}22%{opacity:1;}62%{opacity:1;}100%{opacity:0;transform:translateY(-20px) scale(1);}}
   .brand .sci{display:inline-block;animation:bob2 2.8s ease-in-out infinite;}
+  .brand .navsci{display:flex;align-items:center;}
 
   /* scDNA animated banner (single-cell sequencing + methylation) */
   .scdna-banner{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
@@ -346,12 +365,13 @@
 <!-- ===================== NAV ===================== -->
 <header class="nav">
   <div class="wrap nav-inner">
-    <a class="brand" href="#top"><span class="dot"></span>Maryam&nbsp;Fathi</a>
+    <a class="brand" href="#top"><span class="navsci"><svg viewBox="0 0 40 40" width="24" height="24" aria-hidden="true"><path d="M6 40 q14 -13 28 0 z" fill="#fff" stroke="#e2dcec" stroke-width="1"/><rect x="17" y="25" width="6" height="7" rx="2" fill="#f6cfa6"/><circle cx="20" cy="19" r="10.5" fill="#f7d0a7"/><path d="M8.5 21 q-1.5 -17 11.5 -17 q13 0 11.5 17 q-2.5 -7 -7 -8 q-4.5 3 -9 0 q-4.5 1 -7 8 z" fill="#211c30"/><path d="M8.7 19 q-1.6 9 1 13 l2.2 -1 q-2.3 -6 -1.2 -12 z" fill="#211c30"/><path d="M31.3 19 q1.6 9 -1 13 l-2.2 -1 q2.3 -6 1.2 -12 z" fill="#211c30"/><circle cx="16.4" cy="19.5" r="1.5" fill="#2a2340"/><circle cx="23.6" cy="19.5" r="1.5" fill="#2a2340"/><path d="M17 23.4 q3 2.4 6 0" fill="none" stroke="#c07a63" stroke-width="1.1" stroke-linecap="round"/><circle cx="13.6" cy="22.4" r="1.6" fill="#f4a9bd" opacity="0.7"/><circle cx="26.4" cy="22.4" r="1.6" fill="#f4a9bd" opacity="0.7"/></svg></span>Maryam&nbsp;Fathi</a>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
     <nav class="links" id="navLinks">
       <a href="#about">About</a>
       <a href="#science">Science</a>
       <a href="#research">Research</a>
+      <a href="#honors">Honors</a>
       <a href="#publications">Publications</a>
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
@@ -366,7 +386,7 @@
       <span class="eyebrow">🧬 Cancer Genomics · Molecular Tools</span>
       <h1>Maryam Fathi<span style="font-size:.4em;font-weight:500;color:var(--ink-soft);">, M.Sc.</span></h1>
       <p class="role">Ph.D. Candidate in Pharmacology &amp; Experimental Therapeutics<br>Boston University, Boston, MA, USA</p>
-      <p class="lead">I develop advanced genomic, computational, and AI-driven approaches to decode how tumors evolve — building single-cell and CRISPR-based tools to trace clonal lineages, map epigenetic states, and uncover therapeutic vulnerabilities in cancer.</p>
+      <p class="lead">I develop advanced genomic and computational approaches to decode how tumors evolve — building single-cell and CRISPR-based tools to trace clonal lineages, map epigenetic states, and uncover therapeutic vulnerabilities in cancer.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="#research">Explore my research →</a>
         <a class="btn btn-ghost" href="https://github.com/mryfthi" target="_blank" rel="noopener">
@@ -391,7 +411,7 @@
       <div class="stat reveal"><div class="num" data-count="6">0</div><div class="lbl">Research labs &amp; institutes</div></div>
       <div class="stat reveal"><div class="num" data-count="2">0</div><div class="lbl">Industry internships<br>(Novartis · Pfizer)</div></div>
       <div class="stat reveal"><div class="num" data-count="1">0</div><div class="lbl">First-author preprint</div></div>
-      <div class="stat reveal"><div class="num" data-count="10" data-suffix="+">0</div><div class="lbl">Years in the lab</div></div>
+      <div class="stat reveal"><div class="num" data-count="7" data-suffix="+">0</div><div class="lbl">Years in cancer research</div></div>
     </div>
   </div>
 </section>
@@ -416,7 +436,7 @@
     <div class="about-grid">
       <div class="about-card reveal">
         <h3>What I do</h3>
-        <p style="margin-top:0;color:var(--ink-soft);">In the Leshchiner lab at Boston University, my research focuses on developing and applying advanced genomic, computational, and AI approaches to study tumor evolution using patient samples. I'm building a long-read single-cell DNA and methylation sequencing method to detect rare somatic mutations, resolve cell-specific epigenetic states, and reconstruct clonal relationships within tumors.</p>
+        <p style="margin-top:0;color:var(--ink-soft);">In the Leshchiner lab at Boston University, my research focuses on developing and applying advanced genomic and computational approaches to study tumor evolution using patient samples. I'm building a long-read single-cell DNA and methylation sequencing method to detect rare somatic mutations, resolve cell-specific epigenetic states, and reconstruct clonal relationships within tumors.</p>
         <p style="color:var(--ink-soft);">By integrating genomic, epigenomic, and other multi-omics data, I investigate tumor heterogeneity, subclonal dynamics, and the molecular events behind cancer progression and metastasis — with the goal of identifying clinically relevant biomarkers and therapeutic vulnerabilities.</p>
       </div>
       <div class="about-card reveal">
@@ -623,7 +643,7 @@
 <g transform="translate(150,315)"><g class="breathe" style="animation-delay:0.0s"><ellipse cx="0" cy="32" rx="27" ry="7" fill="#000" opacity="0.06"/><circle cx="0" cy="0" r="34" fill="url(#gCream)" stroke="#e0cba8" stroke-width="1.5"/><ellipse cx="-11" cy="-12" rx="12" ry="8" fill="#fff" opacity="0.4"/><ellipse cx="-11" cy="-1" rx="3.4" ry="5" fill="#3a3340"/><ellipse cx="11" cy="-1" rx="3.4" ry="5" fill="#3a3340"/><ellipse cx="-17" cy="8" rx="6" ry="4" fill="#f4a9bd" opacity="0.7"/><ellipse cx="17" cy="8" rx="6" ry="4" fill="#f4a9bd" opacity="0.7"/><path d="M-7 8 q7 7 14 0" fill="none" stroke="#3a3340" stroke-width="2" stroke-linecap="round"/></g></g><g transform="translate(232,285)"><g class="breathe" style="animation-delay:-0.6s"><ellipse cx="0" cy="32" rx="27" ry="7" fill="#000" opacity="0.06"/><circle cx="0" cy="0" r="34" fill="url(#gCream)" stroke="#e0cba8" stroke-width="1.5"/><ellipse cx="-11" cy="-12" rx="12" ry="8" fill="#fff" opacity="0.4"/><ellipse cx="-11" cy="-1" rx="3.4" ry="5" fill="#3a3340"/><ellipse cx="11" cy="-1" rx="3.4" ry="5" fill="#3a3340"/><ellipse cx="-17" cy="8" rx="6" ry="4" fill="#f4a9bd" opacity="0.7"/><ellipse cx="17" cy="8" rx="6" ry="4" fill="#f4a9bd" opacity="0.7"/><path d="M-7 8 q7 7 14 0" fill="none" stroke="#3a3340" stroke-width="2" stroke-linecap="round"/></g></g><g transform="translate(305,320)"><g class="breathe" style="animation-delay:-1.2s"><ellipse cx="0" cy="32" rx="27" ry="7" fill="#000" opacity="0.06"/><circle cx="0" cy="0" r="34" fill="url(#gCream)" stroke="#e0cba8" stroke-width="1.5"/><ellipse cx="-11" cy="-12" rx="12" ry="8" fill="#fff" opacity="0.4"/><ellipse cx="-11" cy="-1" rx="3.4" ry="5" fill="#3a3340"/><ellipse cx="11" cy="-1" rx="3.4" ry="5" fill="#3a3340"/><ellipse cx="-17" cy="8" rx="6" ry="4" fill="#f4a9bd" opacity="0.7"/><ellipse cx="17" cy="8" rx="6" ry="4" fill="#f4a9bd" opacity="0.7"/><path d="M-7 8 q7 7 14 0" fill="none" stroke="#3a3340" stroke-width="2" stroke-linecap="round"/></g></g><g transform="translate(200,362)"><g class="breathe" style="animation-delay:-1.8s"><ellipse cx="0" cy="32" rx="27" ry="7" fill="#000" opacity="0.06"/><circle cx="0" cy="0" r="34" fill="url(#gCream)" stroke="#e0cba8" stroke-width="1.5"/><ellipse cx="-11" cy="-12" rx="12" ry="8" fill="#fff" opacity="0.4"/><ellipse cx="-11" cy="-1" rx="3.4" ry="5" fill="#3a3340"/><ellipse cx="11" cy="-1" rx="3.4" ry="5" fill="#3a3340"/><ellipse cx="-17" cy="8" rx="6" ry="4" fill="#f4a9bd" opacity="0.7"/><ellipse cx="17" cy="8" rx="6" ry="4" fill="#f4a9bd" opacity="0.7"/><path d="M-7 8 q7 7 14 0" fill="none" stroke="#3a3340" stroke-width="2" stroke-linecap="round"/></g></g><g transform="translate(285,372)"><g class="breathe" style="animation-delay:-2.4s"><ellipse cx="0" cy="32" rx="27" ry="7" fill="#000" opacity="0.06"/><circle cx="0" cy="0" r="34" fill="url(#gCream)" stroke="#e0cba8" stroke-width="1.5"/><ellipse cx="-11" cy="-12" rx="12" ry="8" fill="#fff" opacity="0.4"/><ellipse cx="-11" cy="-1" rx="3.4" ry="5" fill="#3a3340"/><ellipse cx="11" cy="-1" rx="3.4" ry="5" fill="#3a3340"/><ellipse cx="-17" cy="8" rx="6" ry="4" fill="#f4a9bd" opacity="0.7"/><ellipse cx="17" cy="8" rx="6" ry="4" fill="#f4a9bd" opacity="0.7"/><path d="M-7 8 q7 7 14 0" fill="none" stroke="#3a3340" stroke-width="2" stroke-linecap="round"/></g></g><g transform="translate(135,388)"><g class="breathe" style="animation-delay:-3.0s"><ellipse cx="0" cy="32" rx="27" ry="7" fill="#000" opacity="0.06"/><circle cx="0" cy="0" r="34" fill="url(#gCream)" stroke="#e0cba8" stroke-width="1.5"/><ellipse cx="-11" cy="-12" rx="12" ry="8" fill="#fff" opacity="0.4"/><ellipse cx="-11" cy="-1" rx="3.4" ry="5" fill="#3a3340"/><ellipse cx="11" cy="-1" rx="3.4" ry="5" fill="#3a3340"/><ellipse cx="-17" cy="8" rx="6" ry="4" fill="#f4a9bd" opacity="0.7"/><ellipse cx="17" cy="8" rx="6" ry="4" fill="#f4a9bd" opacity="0.7"/><path d="M-7 8 q7 7 14 0" fill="none" stroke="#3a3340" stroke-width="2" stroke-linecap="round"/></g></g><g transform="translate(250,425)"><g class="breathe" style="animation-delay:-3.6s"><ellipse cx="0" cy="32" rx="27" ry="7" fill="#000" opacity="0.06"/><circle cx="0" cy="0" r="34" fill="url(#gCream)" stroke="#e0cba8" stroke-width="1.5"/><ellipse cx="-11" cy="-12" rx="12" ry="8" fill="#fff" opacity="0.4"/><ellipse cx="-11" cy="-1" rx="3.4" ry="5" fill="#3a3340"/><ellipse cx="11" cy="-1" rx="3.4" ry="5" fill="#3a3340"/><ellipse cx="-17" cy="8" rx="6" ry="4" fill="#f4a9bd" opacity="0.7"/><ellipse cx="17" cy="8" rx="6" ry="4" fill="#f4a9bd" opacity="0.7"/><path d="M-7 8 q7 7 14 0" fill="none" stroke="#3a3340" stroke-width="2" stroke-linecap="round"/></g></g><g transform="translate(322,262)"><g class="mutcell" style="animation-delay:0s"><ellipse cx="0" cy="34" rx="29" ry="7" fill="#000" opacity="0.06"/><circle cx="0" cy="0" r="36" fill="url(#gPurple)" stroke="#9f86cf" stroke-width="1.5"/><ellipse cx="-12" cy="-12" rx="12" ry="9" fill="#fff" opacity="0.4"/><ellipse cx="-11" cy="-1" rx="3.4" ry="5" fill="#3a3340"/><ellipse cx="11" cy="-1" rx="3.4" ry="5" fill="#3a3340"/><ellipse cx="-17" cy="8" rx="6" ry="4" fill="#f4a9bd" opacity="0.7"/><ellipse cx="17" cy="8" rx="6" ry="4" fill="#f4a9bd" opacity="0.7"/><path d="M-7 8 q7 7 14 0" fill="none" stroke="#3a3340" stroke-width="2" stroke-linecap="round"/></g></g><g class="mspark"><line x1="322" y1="214" x2="322" y2="200" stroke="#9a7fc8" stroke-width="3" stroke-linecap="round"/><line x1="298" y1="222" x2="290" y2="210" stroke="#9a7fc8" stroke-width="3" stroke-linecap="round"/><line x1="346" y1="222" x2="354" y2="210" stroke="#9a7fc8" stroke-width="3" stroke-linecap="round"/></g><line class="dash" x1="360" y1="235" x2="452" y2="180" stroke="#b6a0dd" stroke-width="2" stroke-dasharray="5 5"/><circle cx="505" cy="140" r="72" fill="#fff" stroke="#9a7fc8" stroke-width="5"/><path d="M470.0,140.0L471.2,143.7L472.3,147.1L473.5,150.2L474.7,152.7L475.8,154.6L477.0,155.7L478.2,156.0L479.3,155.4L480.5,154.0L481.7,151.9L482.8,149.1L484.0,145.9L485.2,142.3L486.3,138.7L487.5,135.1L488.7,131.7L489.8,128.8L491.0,126.5L492.2,124.9L493.3,124.1L494.5,124.1L495.7,125.0L496.8,126.7L498.0,129.0L499.2,132.0L500.3,135.4L501.5,139.0L502.7,142.7L503.8,146.2L505.0,149.4L506.2,152.1L507.3,154.2L508.5,155.5L509.7,156.0L510.8,155.7L512.0,154.5L513.2,152.5L514.3,149.9L515.5,146.8L516.7,143.3L517.8,139.7L519.0,136.0L520.2,132.6L521.3,129.5L522.5,127.1L523.7,125.3L524.8,124.2L526.0,124.0L527.2,124.7L528.3,126.1L529.5,128.3L530.7,131.1L531.8,134.4L533.0,138.0L534.2,141.7L535.3,145.3L536.5,148.6L537.7,151.4L538.8,153.7L540.0,155.2" fill="none" stroke="#8a6fc8" stroke-width="4"/><path d="M470.0,140.0L471.2,136.3L472.3,132.9L473.5,129.8L474.7,127.3L475.8,125.4L477.0,124.3L478.2,124.0L479.3,124.6L480.5,126.0L481.7,128.1L482.8,130.9L484.0,134.1L485.2,137.7L486.3,141.3L487.5,144.9L488.7,148.3L489.8,151.2L491.0,153.5L492.2,155.1L493.3,155.9L494.5,155.9L495.7,155.0L496.8,153.3L498.0,151.0L499.2,148.0L500.3,144.6L501.5,141.0L502.7,137.3L503.8,133.8L505.0,130.6L506.2,127.9L507.3,125.8L508.5,124.5L509.7,124.0L510.8,124.3L512.0,125.5L513.2,127.5L514.3,130.1L515.5,133.2L516.7,136.7L517.8,140.3L519.0,144.0L520.2,147.4L521.3,150.5L522.5,152.9L523.7,154.7L524.8,155.8L526.0,156.0L527.2,155.3L528.3,153.9L529.5,151.7L530.7,148.9L531.8,145.6L533.0,142.0L534.2,138.3L535.3,134.7L536.5,131.4L537.7,128.6L538.8,126.3L540.0,124.8" fill="none" stroke="#b58bcf" stroke-width="4"/><line class="" x1="470.0" y1="140.0" x2="470.0" y2="140.0" stroke="#c3b0e6" stroke-width="2.5"/><line class="" x1="478.2" y1="156.0" x2="478.2" y2="124.0" stroke="#c3b0e6" stroke-width="2.5"/><line class="" x1="486.3" y1="138.7" x2="486.3" y2="141.3" stroke="#c3b0e6" stroke-width="2.5"/><line class="" x1="494.5" y1="124.1" x2="494.5" y2="155.9" stroke="#c3b0e6" stroke-width="2.5"/><line class="lensbase" x1="502.7" y1="142.7" x2="502.7" y2="137.3" stroke="#f4c150" stroke-width="4"/><line class="" x1="510.8" y1="155.7" x2="510.8" y2="124.3" stroke="#c3b0e6" stroke-width="2.5"/><line class="" x1="519.0" y1="136.0" x2="519.0" y2="144.0" stroke="#c3b0e6" stroke-width="2.5"/><line class="" x1="527.2" y1="124.7" x2="527.2" y2="155.3" stroke="#c3b0e6" stroke-width="2.5"/><line class="" x1="535.3" y1="145.3" x2="535.3" y2="134.7" stroke="#c3b0e6" stroke-width="2.5"/><path class="lspark" d="M548,120 l3,7 7,3 -7,3 -3,7 -3,-7 -7,-3 7,-3 z" fill="#f4c150"/><path class="arrow" d="M585 330 q70 -34 150 -14" fill="none" stroke="#9a7fc8" stroke-width="6" stroke-linecap="round" marker-end="url(#pa)"/><g transform="translate(820,300)"><g class="clone" style="animation-delay:1.6s"><ellipse cx="0" cy="32" rx="27" ry="7" fill="#000" opacity="0.06"/><circle cx="0" cy="0" r="34" fill="url(#gPurple)" stroke="#9f86cf" stroke-width="1.5"/><ellipse cx="-11" cy="-12" rx="12" ry="8" fill="#fff" opacity="0.4"/><ellipse cx="-11" cy="-1" rx="3.4" ry="5" fill="#3a3340"/><ellipse cx="11" cy="-1" rx="3.4" ry="5" fill="#3a3340"/><ellipse cx="-17" cy="8" rx="6" ry="4" fill="#f4a9bd" opacity="0.7"/><ellipse cx="17" cy="8" rx="6" ry="4" fill="#f4a9bd" opacity="0.7"/><path d="M-7 8 q7 7 14 0" fill="none" stroke="#3a3340" stroke-width="2" stroke-linecap="round"/></g></g><g transform="translate(895,275)"><g class="clone" style="animation-delay:1.88s"><ellipse cx="0" cy="32" rx="27" ry="7" fill="#000" opacity="0.06"/><circle cx="0" cy="0" r="34" fill="url(#gPurple)" stroke="#9f86cf" stroke-width="1.5"/><ellipse cx="-11" cy="-12" rx="12" ry="8" fill="#fff" opacity="0.4"/><ellipse cx="-11" cy="-1" rx="3.4" ry="5" fill="#3a3340"/><ellipse cx="11" cy="-1" rx="3.4" ry="5" fill="#3a3340"/><ellipse cx="-17" cy="8" rx="6" ry="4" fill="#f4a9bd" opacity="0.7"/><ellipse cx="17" cy="8" rx="6" ry="4" fill="#f4a9bd" opacity="0.7"/><path d="M-7 8 q7 7 14 0" fill="none" stroke="#3a3340" stroke-width="2" stroke-linecap="round"/></g></g><g transform="translate(760,320)"><g class="clone" style="animation-delay:2.16s"><ellipse cx="0" cy="32" rx="27" ry="7" fill="#000" opacity="0.06"/><circle cx="0" cy="0" r="34" fill="url(#gPurple)" stroke="#9f86cf" stroke-width="1.5"/><ellipse cx="-11" cy="-12" rx="12" ry="8" fill="#fff" opacity="0.4"/><ellipse cx="-11" cy="-1" rx="3.4" ry="5" fill="#3a3340"/><ellipse cx="11" cy="-1" rx="3.4" ry="5" fill="#3a3340"/><ellipse cx="-17" cy="8" rx="6" ry="4" fill="#f4a9bd" opacity="0.7"/><ellipse cx="17" cy="8" rx="6" ry="4" fill="#f4a9bd" opacity="0.7"/><path d="M-7 8 q7 7 14 0" fill="none" stroke="#3a3340" stroke-width="2" stroke-linecap="round"/></g></g><g transform="translate(870,345)"><g class="clone" style="animation-delay:2.44s"><ellipse cx="0" cy="32" rx="27" ry="7" fill="#000" opacity="0.06"/><circle cx="0" cy="0" r="34" fill="url(#gPurple)" stroke="#9f86cf" stroke-width="1.5"/><ellipse cx="-11" cy="-12" rx="12" ry="8" fill="#fff" opacity="0.4"/><ellipse cx="-11" cy="-1" rx="3.4" ry="5" fill="#3a3340"/><ellipse cx="11" cy="-1" rx="3.4" ry="5" fill="#3a3340"/><ellipse cx="-17" cy="8" rx="6" ry="4" fill="#f4a9bd" opacity="0.7"/><ellipse cx="17" cy="8" rx="6" ry="4" fill="#f4a9bd" opacity="0.7"/><path d="M-7 8 q7 7 14 0" fill="none" stroke="#3a3340" stroke-width="2" stroke-linecap="round"/></g></g><g transform="translate(800,362)"><g class="clone" style="animation-delay:2.72s"><ellipse cx="0" cy="32" rx="27" ry="7" fill="#000" opacity="0.06"/><circle cx="0" cy="0" r="34" fill="url(#gPurple)" stroke="#9f86cf" stroke-width="1.5"/><ellipse cx="-11" cy="-12" rx="12" ry="8" fill="#fff" opacity="0.4"/><ellipse cx="-11" cy="-1" rx="3.4" ry="5" fill="#3a3340"/><ellipse cx="11" cy="-1" rx="3.4" ry="5" fill="#3a3340"/><ellipse cx="-17" cy="8" rx="6" ry="4" fill="#f4a9bd" opacity="0.7"/><ellipse cx="17" cy="8" rx="6" ry="4" fill="#f4a9bd" opacity="0.7"/><path d="M-7 8 q7 7 14 0" fill="none" stroke="#3a3340" stroke-width="2" stroke-linecap="round"/></g></g><g transform="translate(930,322)"><g class="clone" style="animation-delay:3.0s"><ellipse cx="0" cy="32" rx="27" ry="7" fill="#000" opacity="0.06"/><circle cx="0" cy="0" r="34" fill="url(#gPurple)" stroke="#9f86cf" stroke-width="1.5"/><ellipse cx="-11" cy="-12" rx="12" ry="8" fill="#fff" opacity="0.4"/><ellipse cx="-11" cy="-1" rx="3.4" ry="5" fill="#3a3340"/><ellipse cx="11" cy="-1" rx="3.4" ry="5" fill="#3a3340"/><ellipse cx="-17" cy="8" rx="6" ry="4" fill="#f4a9bd" opacity="0.7"/><ellipse cx="17" cy="8" rx="6" ry="4" fill="#f4a9bd" opacity="0.7"/><path d="M-7 8 q7 7 14 0" fill="none" stroke="#3a3340" stroke-width="2" stroke-linecap="round"/></g></g><path class="tw" style="animation-delay:0.0s" d="M760,238 l2.5,6 6,2.5 -6,2.5 -2.5,6 -2.5,-6 -6,-2.5 6,-2.5 z" fill="#b39ddb"/><path class="tw" style="animation-delay:0.5s" d="M950,250 l2.5,6 6,2.5 -6,2.5 -2.5,6 -2.5,-6 -6,-2.5 6,-2.5 z" fill="#b39ddb"/><path class="tw" style="animation-delay:1.0s" d="M972,352 l2.5,6 6,2.5 -6,2.5 -2.5,6 -2.5,-6 -6,-2.5 6,-2.5 z" fill="#b39ddb"/><path class="tw" style="animation-delay:1.5s" d="M748,364 l2.5,6 6,2.5 -6,2.5 -2.5,6 -2.5,-6 -6,-2.5 6,-2.5 z" fill="#b39ddb"/><path class="tw" style="animation-delay:2.0s" d="M905,216 l2.5,6 6,2.5 -6,2.5 -2.5,6 -2.5,-6 -6,-2.5 6,-2.5 z" fill="#b39ddb"/>
 </svg>
       <h3>🌱 Somatic mutations &amp; clonal expansion</h3>
-      <p>A mutation arises in a single cell — its DNA lights up in the lens — and that clone expands through the tumour, one division at a time.</p>
+      <p>A mutation arises in a single cell — its DNA lights up in the lens — and that clone expands through the tumor.</p>
     </div>
   </div>
 </section>
@@ -641,7 +661,7 @@
     <div class="sec-head reveal">
       <span class="kicker">Experience</span>
       <h2>Research journey</h2>
-      <p>From base-editing lineage tracers at Dartmouth to functional genomics at Pfizer and intracellular delivery at Novartis — a path across academia and industry, all pointed at understanding cancer.</p>
+      <p>From base-editing lineage tracers at Dartmouth to functional genomics at Pfizer and intracellular delivery at Novartis — and now at Boston University, developing single-cell tools to uncover the somatic mutations that drive cancer. A path across academia and industry.</p>
     </div>
     <div class="timeline">
 
@@ -651,7 +671,7 @@
             <span class="t-role">Graduate Candidate · Pharmacology &amp; Experimental Therapeutics</span>
             <span class="t-date">Sep 2023 – Present</span>
           </div>
-          <div class="t-org">Ignaty Leshchiner Lab · Boston University · Boston, MA</div>
+          <div class="t-org">Ignaty Leshchiner Lab · Boston University · Boston, MA, USA</div>
           <p class="t-desc">Developing long-read single-cell DNA &amp; methylation sequencing to detect rare somatic mutations, resolve cell-specific epigenetic states, and reconstruct clonal relationships within tumors. Integrating multi-omics data to map tumor heterogeneity and metastasis.</p>
         </div>
       </div>
@@ -659,10 +679,10 @@
       <div class="t-item reveal">
         <div class="t-card">
           <div class="t-top">
-            <span class="t-role">NSF Research Internship Award</span>
+            <span class="t-role">Summer Research Intern · NSF-funded</span>
             <span class="t-date">Jul – Sep 2025</span>
           </div>
-          <div class="t-org">Novartis Institutes for Biomedical Research · Cambridge, MA</div>
+          <div class="t-org">Novartis Institutes for Biomedical Research · Cambridge, MA, USA</div>
           <p class="t-desc">Deployed advanced technologies and models to deliver components intracellularly, contributing to the advancement of therapeutic discovery.</p>
         </div>
       </div>
@@ -673,7 +693,7 @@
             <span class="t-role">Research Internship</span>
             <span class="t-date">Jul – Sep 2024</span>
           </div>
-          <div class="t-org">Pfizer · Cambridge, MA</div>
+          <div class="t-org">Pfizer · Cambridge, MA, USA</div>
           <p class="t-desc">Applied functional genomic techniques to assess several targets in primary human B and T cells, exploring key pathways in B/T-cell activation and proliferation during inflammation.</p>
         </div>
       </div>
@@ -684,7 +704,7 @@
             <span class="t-role">Research Associate</span>
             <span class="t-date">Jun 2019 – Aug 2023</span>
           </div>
-          <div class="t-org">McKenna Lab · Dartmouth College · Lebanon, NH</div>
+          <div class="t-org">McKenna Lab · Dartmouth College · Lebanon, NH, USA</div>
           <p class="t-desc">Enhanced lineage-tracing technologies using advanced CRISPR and base-editing methods to better track tumor initiation and progression and discover new mechanisms of drug resistance in tumor cells.</p>
         </div>
       </div>
@@ -695,7 +715,7 @@
             <span class="t-role">Research Assistant (Volunteer)</span>
             <span class="t-date">Jan – Jun 2019</span>
           </div>
-          <div class="t-org">Raman Lab · Dartmouth College · Lebanon, NH</div>
+          <div class="t-org">Raman Lab · Dartmouth College · Lebanon, NH, USA</div>
           <p class="t-desc">Studied how the epithelial-to-mesenchymal transition (EMT) drives tumor metastasis and drug resistance — targeting EMT inhibition / MET induction to increase tumor sensitivity to chemotherapy.</p>
         </div>
       </div>
@@ -713,13 +733,31 @@
 
     </div>
 
-    <div class="about-card reveal" style="margin-top:14px;background:var(--cream-2);">
+  </div>
+</section>
+
+<!-- ===================== HONORS ===================== -->
+<section id="honors">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">Honors</span>
+      <h2>Honors &amp; Awards</h2>
+    </div>
+    <div class="about-card reveal" style="background:var(--cream-2);">
       <div class="t-top">
-        <span class="t-role">🎓 Accepted · Big Data Training for Cancer Research (BigCARE)</span>
+        <span class="t-role">🏆 Selected · Big Data Training for Cancer Research (BigCARE)</span>
         <span class="t-date">Jul 2026</span>
       </div>
-      <div class="t-org">Chao Family Comprehensive Cancer Center · UC Irvine, CA</div>
-      <p class="t-desc">Accepted into a competitive, NCI-funded program on the computational analysis, visualization, and integration of large-scale cancer omics data.</p>
+      <div class="t-org">Chao Family Comprehensive Cancer Center · UC Irvine, CA, USA</div>
+      <p class="t-desc">Selected for a competitive, NCI-funded program on the computational analysis, visualization, and integration of large-scale cancer omics data.</p>
+    </div>
+    <div class="about-card reveal" style="margin-top:14px;background:var(--cream-2);">
+      <div class="t-top">
+        <span class="t-role">🏆 NSF Research Internship Award</span>
+        <span class="t-date">Summer 2025</span>
+      </div>
+      <div class="t-org">Novartis Institutes for Biomedical Research · Cambridge, MA, USA</div>
+      <p class="t-desc">Competitive NSF-funded research internship award, supporting a summer of research on intracellular delivery technologies for therapeutic discovery at Novartis.</p>
     </div>
   </div>
 </section>
@@ -738,12 +776,103 @@
       <span class="kicker">Publications</span>
       <h2>Selected work</h2>
     </div>
-    <div class="pub reveal">
-      <span class="tag">Preprint · bioRxiv 2026</span>
-      <h3>PALINCODE: Recording cell lineage with ternary palindromic CRISPR bits</h3>
-      <p class="authors"><b>Fathi M</b>, Cook A, Bagheri M, Curiel T, McKenna A.</p>
-      <p class="venue">bioRxiv, 2026 · doi:10.64898/2026.04.16.718941</p>
-      <a class="doi" href="https://doi.org/10.64898/2026.04.16.718941" target="_blank" rel="noopener">Read the preprint ↗</a>
+    <div class="pub-figure reveal">
+      <svg class="palin-svg" viewBox="0 0 660 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="PALINCODE palindromic A-to-G base-editing mechanism">
+<defs>
+  <radialGradient id="gCloudR" cx="42%" cy="34%" r="72%"><stop offset="0%" stop-color="#fbdedb"/><stop offset="100%" stop-color="#eda7a0"/></radialGradient>
+  <radialGradient id="gCloudC" cx="42%" cy="34%" r="72%"><stop offset="0%" stop-color="#d3eef4"/><stop offset="100%" stop-color="#93cfdd"/></radialGradient>
+  <style>
+    .palin-svg{font-family:'Inter',system-ui,sans-serif;}
+    .cloudR{transform-box:fill-box;transform-origin:center;animation:pR 5s ease-in-out infinite;}
+    .cloudC{transform-box:fill-box;transform-origin:center;animation:pC 5s ease-in-out infinite;}
+    @keyframes pR{0%,42%{transform:translateY(0) scale(1);}12%{transform:translateY(3px) scale(1.05);}55%,100%{transform:translateY(0) scale(.96);opacity:.75;}}
+    @keyframes pC{0%,48%{transform:translateY(0) scale(.96);opacity:.75;}62%{transform:translateY(-3px) scale(1.05);opacity:1;}90%,100%{transform:translateY(0) scale(1);opacity:1;}}
+    .tgtR .bA{animation:aOffR 5s ease-in-out infinite;} .tgtR .bG{animation:gOnR 5s ease-in-out infinite;}
+    .tgtR .ring{stroke:#e06666;stroke-width:0;animation:ringR 5s ease-in-out infinite;}
+    @keyframes aOffR{0%,12%{opacity:1;}20%,100%{opacity:0;}} @keyframes gOnR{0%,14%{opacity:0;}22%,100%{opacity:1;}}
+    @keyframes ringR{0%,8%{stroke-width:0;}13%,24%{stroke-width:3;}30%,100%{stroke-width:0;}}
+    .tgtC .bA{animation:aOffC 5s ease-in-out infinite;} .tgtC .bG{animation:gOnC 5s ease-in-out infinite;}
+    .tgtC .ring{stroke:#35b5cf;stroke-width:0;animation:ringC 5s ease-in-out infinite;}
+    @keyframes aOffC{0%,56%{opacity:1;}64%,100%{opacity:0;}} @keyframes gOnC{0%,58%{opacity:0;}66%,100%{opacity:1;}}
+    @keyframes ringC{0%,54%{stroke-width:0;}59%,70%{stroke-width:3;}76%,100%{stroke-width:0;}}
+    .boltR{animation:bR 5s ease-in-out infinite;opacity:0;} @keyframes bR{0%,10%{opacity:0;}18%,44%{opacity:1;}52%,100%{opacity:0;}}
+    .boltC{animation:bC 5s ease-in-out infinite;opacity:0;} @keyframes bC{0%,58%{opacity:0;}66%,92%{opacity:1;}98%,100%{opacity:0;}}
+    .markR{transform-box:fill-box;transform-origin:center;animation:mR 5s ease-in-out infinite;}
+    @keyframes mR{0%,14%{opacity:.12;transform:scale(.5);}22%{opacity:1;transform:scale(1.3);}28%{transform:scale(1);}100%{opacity:1;transform:scale(1);}}
+    .markC{transform-box:fill-box;transform-origin:center;animation:mC 5s ease-in-out infinite;}
+    @keyframes mC{0%,60%{opacity:.12;transform:scale(.5);}68%{opacity:1;transform:scale(1.3);}74%{transform:scale(1);}100%{opacity:1;transform:scale(1);}}
+    .noconv{animation:nc 5s ease-in-out infinite;transform-box:fill-box;transform-origin:center;}
+    @keyframes nc{0%,100%{opacity:.5;transform:scale(1);}50%{opacity:1;transform:scale(1.12);}}
+    .grnaR{transform-box:fill-box;transform-origin:top center;animation:swayG 3s ease-in-out infinite;}
+    .grnaC{transform-box:fill-box;transform-origin:bottom center;animation:swayG 3.4s ease-in-out infinite;}
+    @keyframes swayG{0%,100%{transform:rotate(-2.5deg);}50%{transform:rotate(2.5deg);}}
+    @media(prefers-reduced-motion:reduce){*{animation:none!important;} .tgtR .bA,.tgtC .bA{opacity:0!important;} .tgtR .bG,.tgtC .bG{opacity:1!important;} .markR,.markC{opacity:1!important;} .boltR,.boltC{opacity:0!important;}}
+  </style>
+</defs>
+
+<text x="330" y="24" text-anchor="middle" font-size="16" font-weight="700" fill="#333">Palindromic target</text>
+<rect x="146" y="169" width="224" height="42" rx="12" fill="#eaeaea"/><rect x="374" y="141" width="224" height="42" rx="12" fill="#eaeaea"/>
+
+<rect x="96" y="150" width="38" height="48" rx="4" fill="#d2d2d2"/><text x="115" y="179" text-anchor="middle" font-size="12" font-weight="700" fill="#555">CCN</text>
+<rect x="596" y="150" width="40" height="48" rx="4" fill="#d2d2d2"/><text x="616" y="179" text-anchor="middle" font-size="12" font-weight="700" fill="#555">NGG</text>
+
+<g><rect x="150" y="150" width="24" height="24" rx="5" fill="#f2e0a8"/><text x="162.0" y="167" text-anchor="middle" font-size="13" font-weight="700" fill="#55606a">G</text></g><g><rect x="178" y="150" width="24" height="24" rx="5" fill="#f2e0a8"/><text x="190.0" y="167" text-anchor="middle" font-size="13" font-weight="700" fill="#55606a">G</text></g><g><rect x="206" y="150" width="24" height="24" rx="5" fill="#b5dcae"/><text x="218.0" y="167" text-anchor="middle" font-size="13" font-weight="700" fill="#55606a">A</text></g><g><rect x="234" y="150" width="24" height="24" rx="5" fill="#f4c2b0"/><text x="246.0" y="167" text-anchor="middle" font-size="13" font-weight="700" fill="#55606a">T</text></g><g><rect x="262" y="150" width="24" height="24" rx="5" fill="#b3cfe8"/><text x="274.0" y="167" text-anchor="middle" font-size="13" font-weight="700" fill="#55606a">C</text></g><g><rect x="290" y="150" width="24" height="24" rx="5" fill="#f4c2b0"/><text x="302.0" y="167" text-anchor="middle" font-size="13" font-weight="700" fill="#55606a">T</text></g><g><rect x="318" y="150" width="24" height="24" rx="5" fill="#b5dcae"/><text x="330.0" y="167" text-anchor="middle" font-size="13" font-weight="700" fill="#55606a">A</text></g><g><rect x="346" y="150" width="24" height="24" rx="5" fill="#b3cfe8"/><text x="358.0" y="167" text-anchor="middle" font-size="13" font-weight="700" fill="#55606a">C</text></g><g><rect x="374" y="150" width="24" height="24" rx="5" fill="#f2e0a8"/><text x="386.0" y="167" text-anchor="middle" font-size="13" font-weight="700" fill="#55606a">G</text></g><g><rect x="402" y="150" width="24" height="24" rx="5" fill="#f4c2b0"/><text x="414.0" y="167" text-anchor="middle" font-size="13" font-weight="700" fill="#55606a">T</text></g><g><rect x="430" y="150" width="24" height="24" rx="5" fill="#b5dcae"/><text x="442.0" y="167" text-anchor="middle" font-size="13" font-weight="700" fill="#55606a">A</text></g><g><rect x="458" y="150" width="24" height="24" rx="5" fill="#f2e0a8"/><text x="470.0" y="167" text-anchor="middle" font-size="13" font-weight="700" fill="#55606a">G</text></g><g class="tgtR"><g class="bA"><rect x="486" y="150" width="24" height="24" rx="5" fill="#b5dcae"/><text x="498.0" y="167" text-anchor="middle" font-size="13" font-weight="700" fill="#55606a">A</text></g><g class="bG"><rect x="486" y="150" width="24" height="24" rx="5" fill="#f2e0a8"/><text x="498.0" y="167" text-anchor="middle" font-size="13" font-weight="700" fill="#55606a">G</text></g><rect class="ring" x="486" y="150" width="24" height="24" rx="5" fill="none"/></g><g><rect x="514" y="150" width="24" height="24" rx="5" fill="#f4c2b0"/><text x="526.0" y="167" text-anchor="middle" font-size="13" font-weight="700" fill="#55606a">T</text></g><g><rect x="542" y="150" width="24" height="24" rx="5" fill="#b3cfe8"/><text x="554.0" y="167" text-anchor="middle" font-size="13" font-weight="700" fill="#55606a">C</text></g><g><rect x="570" y="150" width="24" height="24" rx="5" fill="#b3cfe8"/><text x="582.0" y="167" text-anchor="middle" font-size="13" font-weight="700" fill="#55606a">C</text></g><g><rect x="150" y="178" width="24" height="24" rx="5" fill="#b3cfe8"/><text x="162.0" y="195" text-anchor="middle" font-size="13" font-weight="700" fill="#55606a">C</text></g><g><rect x="178" y="178" width="24" height="24" rx="5" fill="#b3cfe8"/><text x="190.0" y="195" text-anchor="middle" font-size="13" font-weight="700" fill="#55606a">C</text></g><g><rect x="206" y="178" width="24" height="24" rx="5" fill="#f4c2b0"/><text x="218.0" y="195" text-anchor="middle" font-size="13" font-weight="700" fill="#55606a">T</text></g><g class="tgtC"><g class="bA"><rect x="234" y="178" width="24" height="24" rx="5" fill="#b5dcae"/><text x="246.0" y="195" text-anchor="middle" font-size="13" font-weight="700" fill="#55606a">A</text></g><g class="bG"><rect x="234" y="178" width="24" height="24" rx="5" fill="#f2e0a8"/><text x="246.0" y="195" text-anchor="middle" font-size="13" font-weight="700" fill="#55606a">G</text></g><rect class="ring" x="234" y="178" width="24" height="24" rx="5" fill="none"/></g><g><rect x="262" y="178" width="24" height="24" rx="5" fill="#f2e0a8"/><text x="274.0" y="195" text-anchor="middle" font-size="13" font-weight="700" fill="#55606a">G</text></g><g><rect x="290" y="178" width="24" height="24" rx="5" fill="#b5dcae"/><text x="302.0" y="195" text-anchor="middle" font-size="13" font-weight="700" fill="#55606a">A</text></g><g><rect x="318" y="178" width="24" height="24" rx="5" fill="#f4c2b0"/><text x="330.0" y="195" text-anchor="middle" font-size="13" font-weight="700" fill="#55606a">T</text></g><g><rect x="346" y="178" width="24" height="24" rx="5" fill="#f2e0a8"/><text x="358.0" y="195" text-anchor="middle" font-size="13" font-weight="700" fill="#55606a">G</text></g><g><rect x="374" y="178" width="24" height="24" rx="5" fill="#b3cfe8"/><text x="386.0" y="195" text-anchor="middle" font-size="13" font-weight="700" fill="#55606a">C</text></g><g><rect x="402" y="178" width="24" height="24" rx="5" fill="#b5dcae"/><text x="414.0" y="195" text-anchor="middle" font-size="13" font-weight="700" fill="#55606a">A</text></g><g><rect x="430" y="178" width="24" height="24" rx="5" fill="#f4c2b0"/><text x="442.0" y="195" text-anchor="middle" font-size="13" font-weight="700" fill="#55606a">T</text></g><g><rect x="458" y="178" width="24" height="24" rx="5" fill="#b3cfe8"/><text x="470.0" y="195" text-anchor="middle" font-size="13" font-weight="700" fill="#55606a">C</text></g><g><rect x="486" y="178" width="24" height="24" rx="5" fill="#f4c2b0"/><text x="498.0" y="195" text-anchor="middle" font-size="13" font-weight="700" fill="#55606a">T</text></g><g><rect x="514" y="178" width="24" height="24" rx="5" fill="#b5dcae"/><text x="526.0" y="195" text-anchor="middle" font-size="13" font-weight="700" fill="#55606a">A</text></g><g><rect x="542" y="178" width="24" height="24" rx="5" fill="#f2e0a8"/><text x="554.0" y="195" text-anchor="middle" font-size="13" font-weight="700" fill="#55606a">G</text></g><g><rect x="570" y="178" width="24" height="24" rx="5" fill="#f2e0a8"/><text x="582.0" y="195" text-anchor="middle" font-size="13" font-weight="700" fill="#55606a">G</text></g>
+
+<g class="cloudR"><ellipse cx="498.0" cy="99" rx="40" ry="23" fill="url(#gCloudR)"/><circle cx="473.0" cy="94" r="17" fill="url(#gCloudR)"/><circle cx="498.0" cy="80" r="22" fill="url(#gCloudR)"/><circle cx="523.0" cy="91" r="17" fill="url(#gCloudR)"/><ellipse cx="492.0" cy="99" rx="19" ry="8" fill="#ffffff" opacity="0.25"/><ellipse cx="482.0" cy="96" rx="5.5" ry="3.6" fill="#e77" opacity="0.5"/><ellipse cx="512.0" cy="96" rx="5.5" ry="3.6" fill="#e77" opacity="0.5"/><ellipse cx="489.5" cy="89" rx="3.4" ry="4.7" fill="#3a3340"/><ellipse cx="506.5" cy="89" rx="3.4" ry="4.7" fill="#3a3340"/><circle cx="488.3" cy="87.5" r="1" fill="#fff"/><circle cx="505.3" cy="87.5" r="1" fill="#fff"/><path d="M490.5 96 q7.5 6.5 15 0" fill="none" stroke="#3a3340" stroke-width="2" stroke-linecap="round"/></g>
+<text class="cloudR" x="556.0" y="70" font-size="11.5" font-weight="700" fill="#c76b63">Editing</text>
+<text class="cloudR" x="556.0" y="84" font-size="11.5" font-weight="700" fill="#c76b63">Window</text>
+<g class="cloudC"><ellipse cx="246.0" cy="257" rx="40" ry="23" fill="url(#gCloudC)"/><circle cx="221.0" cy="252" r="17" fill="url(#gCloudC)"/><circle cx="246.0" cy="238" r="22" fill="url(#gCloudC)"/><circle cx="271.0" cy="249" r="17" fill="url(#gCloudC)"/><ellipse cx="240.0" cy="257" rx="19" ry="8" fill="#ffffff" opacity="0.25"/><ellipse cx="230.0" cy="254" rx="5.5" ry="3.6" fill="#e77" opacity="0.5"/><ellipse cx="260.0" cy="254" rx="5.5" ry="3.6" fill="#e77" opacity="0.5"/><ellipse cx="237.5" cy="247" rx="3.4" ry="4.7" fill="#3a3340"/><ellipse cx="254.5" cy="247" rx="3.4" ry="4.7" fill="#3a3340"/><circle cx="236.3" cy="245.5" r="1" fill="#fff"/><circle cx="253.3" cy="245.5" r="1" fill="#fff"/><path d="M238.5 254 q7.5 6.5 15 0" fill="none" stroke="#3a3340" stroke-width="2" stroke-linecap="round"/></g>
+<text class="cloudC" x="304.0" y="246" font-size="11.5" font-weight="700" fill="#3f9fb2">Editing</text>
+<text class="cloudC" x="304.0" y="260" font-size="11.5" font-weight="700" fill="#3f9fb2">Window</text>
+
+<g class="grnaR">
+  <line x1="476" y1="137" x2="522" y2="137" stroke="#8a6fc8" stroke-width="4.5" stroke-linecap="round"/>
+  <line x1="476" y1="147" x2="522" y2="147" stroke="#8a6fc8" stroke-width="4.5" stroke-linecap="round"/>
+  <line x1="484" y1="137" x2="484" y2="147" stroke="#b79bec" stroke-width="2.4"/><line x1="496" y1="137" x2="496" y2="147" stroke="#b79bec" stroke-width="2.4"/><line x1="508" y1="137" x2="508" y2="147" stroke="#b79bec" stroke-width="2.4"/><line x1="520" y1="137" x2="520" y2="147" stroke="#b79bec" stroke-width="2.4"/>
+  <path d="M522 137 C 544 132, 553 118, 546 108" fill="none" stroke="#8a6fc8" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M522 147 C 537 144, 545 124, 535 114" fill="none" stroke="#8a6fc8" stroke-width="4.5" stroke-linecap="round"/>
+  <ellipse cx="546" cy="101" rx="11" ry="10" fill="none" stroke="#8a6fc8" stroke-width="4.5"/>
+  <line x1="536" y1="97" x2="556" y2="97" stroke="#b79bec" stroke-width="2.2"/><line x1="537" y1="105" x2="555" y2="105" stroke="#b79bec" stroke-width="2.2"/>
+</g>
+<g class="grnaC">
+  <line x1="224" y1="207" x2="270" y2="207" stroke="#8a6fc8" stroke-width="4.5" stroke-linecap="round"/>
+  <line x1="224" y1="217" x2="270" y2="217" stroke="#8a6fc8" stroke-width="4.5" stroke-linecap="round"/>
+  <line x1="232" y1="207" x2="232" y2="217" stroke="#b79bec" stroke-width="2.4"/><line x1="244" y1="207" x2="244" y2="217" stroke="#b79bec" stroke-width="2.4"/><line x1="256" y1="207" x2="256" y2="217" stroke="#b79bec" stroke-width="2.4"/><line x1="268" y1="207" x2="268" y2="217" stroke="#b79bec" stroke-width="2.4"/>
+  <path d="M270 217 C 292 222, 301 236, 294 246" fill="none" stroke="#8a6fc8" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M270 207 C 285 210, 293 230, 283 240" fill="none" stroke="#8a6fc8" stroke-width="4.5" stroke-linecap="round"/>
+  <ellipse cx="294" cy="253" rx="11" ry="10" fill="none" stroke="#8a6fc8" stroke-width="4.5"/>
+  <line x1="284" y1="249" x2="304" y2="249" stroke="#b79bec" stroke-width="2.2"/><line x1="285" y1="257" x2="303" y2="257" stroke="#b79bec" stroke-width="2.2"/>
+</g>
+<text x="66" y="322" font-size="15" font-weight="700" fill="#333">Base</text>
+<text x="66" y="340" font-size="15" font-weight="700" fill="#333">Editing</text>
+<path d="M108 355 L108 392" stroke="#8a8a8a" stroke-width="9" stroke-linecap="round"/><path d="M95 386 L108 404 L121 386 Z" fill="#8a8a8a"/>
+
+<path class="boltC" d="M246.0 208 L 225 372" stroke="#35b5cf" stroke-width="3" stroke-dasharray="5 5"/>
+<path class="boltR" d="M498.0 168 L 500 372" stroke="#e06666" stroke-width="3" stroke-dasharray="5 5"/>
+
+<!-- LEFT state = bottom-strand (cyan) edit: mark on BOTTOM bar -->
+<g transform="translate(228,392)"><path d="M-72,-16 C-80,-46 -42,-52 -6,-50 C42,-48 78,-40 78,-4 C78,32 60,50 20,52 C-26,54 -62,46 -72,18 C-78,6 -78,-4 -72,-16 Z" fill="#dcdcdc" stroke="#bcbcbc" stroke-width="2"/></g>
+<rect x="173" y="388" width="115" height="9" rx="2" fill="#a9a9a9"/><rect x="173" y="405" width="115" height="9" rx="2" fill="#a9a9a9"/>
+<rect class="markC" x="205" y="403.5" width="11" height="13" rx="2" fill="#35b5cf"/>
+
+<!-- RIGHT state = top-strand (red) edit: mark on TOP bar -->
+<g transform="translate(470,392) scale(-1,1)"><path d="M-72,-16 C-80,-46 -42,-52 -6,-50 C42,-48 78,-40 78,-4 C78,32 60,50 20,52 C-26,54 -62,46 -72,18 C-78,6 -78,-4 -72,-16 Z" fill="#dcdcdc" stroke="#bcbcbc" stroke-width="2"/></g>
+<rect x="412" y="388" width="115" height="9" rx="2" fill="#a9a9a9"/><rect x="412" y="405" width="115" height="9" rx="2" fill="#a9a9a9"/>
+<rect class="markR" x="505" y="386.5" width="11" height="13" rx="2" fill="#e06666"/>
+
+<line x1="300" y1="470" x2="405" y2="470" stroke="#7a7a7a" stroke-width="2.5" stroke-dasharray="6 5"/>
+<path d="M312 464 L300 470 L312 476" fill="none" stroke="#7a7a7a" stroke-width="2.5"/><path d="M393 464 L405 470 L393 476" fill="none" stroke="#7a7a7a" stroke-width="2.5"/>
+<g class="noconv"><circle cx="352" cy="470" r="12" fill="#fff" stroke="#d68a8a" stroke-width="2.5"/><line x1="344" y1="478" x2="360" y2="462" stroke="#d68a8a" stroke-width="2.5"/></g>
+<text x="330" y="504" text-anchor="middle" font-size="14" font-weight="600" fill="#333">Editing prohibits conversion between states</text>
+</svg>
+      <div class="fig-cap"><b>The PALINCODE mechanism</b> — a palindromic target carries two opposing editing windows; base editing writes a permanent mark on one strand, locking the cell into a state that can no longer convert. (Developed at Dartmouth, McKenna Lab.)</div>
+      <div class="pub-cite">
+        <span class="tag-light">Preprint · bioRxiv 2026</span>
+        <h3 class="cite-title">PALINCODE: Recording cell lineage with ternary palindromic CRISPR bits</h3>
+        <p class="cite-authors"><b>Fathi M</b>, Cook A, Bagheri M, Curiel T, McKenna A.</p>
+        <p class="cite-venue">bioRxiv, 2026 · doi:10.64898/2026.04.16.718941</p>
+        <a class="cite-doi" href="https://doi.org/10.64898/2026.04.16.718941" target="_blank" rel="noopener">Read the preprint ↗</a>
+      </div>
     </div>
   </div>
 </section>
@@ -857,7 +986,7 @@
         </svg>
       </div>
       <h2>Let's connect</h2>
-      <p>Interested in cancer genomics, lineage tracing, or molecular tool development? I'd love to hear from you.</p>
+      <p>Interested in somatic mutations, cancer genomics, lineage tracing, or molecular tool development? I'd love to hear from you.</p>
       <div class="contact-links">
         <a class="btn btn-ghost" href="mailto:mryfthi@bu.edu">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7L22 6"/></svg>
@@ -944,6 +1073,19 @@
         scReads.appendChild(sq);
       }
     }
+  }
+
+  // PALINCODE lineage barcode — palindromic ternary bits recorded from the centre out
+  const barcode = document.getElementById('barcode');
+  if (barcode){
+    const TERNARY = ['#ffffff','#E7B24C','#F2A98F']; // bit 0 / 1 / 2
+    const bits = [1,2,0,1,2,0,1,1,0,2,1,0,2,1];       // reads the same forwards & backwards
+    bits.forEach((bit,i) => {
+      const seg = document.createElement('span');
+      seg.style.setProperty('--c', TERNARY[bit]);
+      seg.style.animationDelay = (Math.abs(i - 6.5) * 0.13).toFixed(2) + 's';
+      barcode.appendChild(seg);
+    });
   }
 </script>
 </body>
